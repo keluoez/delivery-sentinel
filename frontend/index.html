@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>交期哨兵 Delivery Sentinel</title>
+<link rel="stylesheet" href="/static/style.css?v=103">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛰️</text></svg>">
+</head>
+<body>
+<div id="app">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">🛰️</div>
+      <div>
+        <div class="logo-title">交期哨兵</div>
+        <div class="logo-sub">Delivery Sentinel</div>
+      </div>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#/dashboard" data-page="dashboard"><span class="nav-ico">🏭</span>工作台</a>
+      <a href="#/orders" data-page="orders"><span class="nav-ico">📋</span>订单风险<span class="nav-badge" id="nav-unparsed-badge" hidden></span></a>
+      <a href="#/hub" data-page="hub"><span class="nav-ico">🔌</span>感知中心</a>
+      <a href="#/alerts" data-page="alerts"><span class="nav-ico">🔔</span>预警中心<span class="nav-badge" id="nav-alert-badge" hidden></span></a>
+      <a href="#/agent" data-page="agent"><span class="nav-ico">🤖</span>智能体运行</a>
+      <a href="#/copilot" data-page="copilot"><span class="nav-ico">💬</span>智能助手</a>
+      <a href="#/settings" data-page="settings"><span class="nav-ico">⚙️</span>设置</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="foot-row"><span class="dot" id="llm-dot"></span><span id="llm-status">LLM：检测中…</span></div>
+      <div class="foot-row muted">v2.0 · LangGraph × FastAPI × 感知层</div>
+    </div>
+  </aside>
+
+  <!-- 主区 -->
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1 id="page-title">工作台</h1>
+        <p id="page-desc" class="muted"></p>
+      </div>
+      <div class="topbar-right">
+        <span class="chip chip-warn" id="pending-chip" hidden title="模拟数据源待消费事件"></span>
+        <button class="btn btn-primary" id="btn-run-global">▶ 运行一轮扫描</button>
+      </div>
+    </header>
+    <section class="content" id="content"></section>
+  </main>
+</div>
+
+<!-- 订单详情抽屉 -->
+<div class="drawer-mask" id="drawer-mask" hidden></div>
+<aside class="drawer" id="drawer" hidden></aside>
+
+<!-- Toast -->
+<div id="toast-box"></div>
+
+<script src="/static/app.js?v=103"></script>
+</body>
+</html>

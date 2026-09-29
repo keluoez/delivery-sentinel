@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# 运行日志
+*.log
+
+# 运行时状态与解析留档（首次启动由 seed_data.py 自动重建）
+data/state.json
+data/inbox/processed/
