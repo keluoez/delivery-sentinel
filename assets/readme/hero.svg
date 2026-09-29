@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <!-- 交期哨兵首屏：深色工业底 + 预警三色，母题 = 进度对比条 -->
+  <rect width="1200" height="340" fill="#0B1220"/>
+  <g stroke="#121D33" stroke-width="1">
+    <line x1="640" y1="0" x2="640" y2="340"/>
+    <line x1="0" y1="232" x2="1200" y2="232"/>
+  </g>
+
+  <!-- 左：标题区 -->
+  <text x="64" y="100" font-size="52" font-weight="700" fill="#E6EDF3">交期哨兵</text>
+  <text x="64" y="134" font-size="16" letter-spacing="5" fill="#F85149" font-family="ui-monospace,Consolas,'Courier New',monospace">DELIVERY SENTINEL</text>
+  <text x="66" y="178" font-size="19" fill="#C7D0DB">制造业交期风险预警智能体</text>
+  <text x="64" y="206" font-size="14" fill="#8B98A9">真实数据进感知层，四级引擎找风险，人审之后才发催办。</text>
+
+  <!-- 右：订单风险卡 -->
+  <rect x="744" y="44" width="396" height="176" rx="12" fill="#121B2E" stroke="#263650"/>
+  <text x="768" y="76" font-size="16" font-weight="600" fill="#E6EDF3">MO-2609-01 · 工业路由器 R-3200</text>
+  <text x="768" y="98" font-size="12" fill="#8B98A9">SMT 车间 · 800 件 · 交期 2026-09-16</text>
+
+  <text x="768" y="126" font-size="12" fill="#8B98A9">实际进度 52%</text>
+  <rect x="768" y="134" width="348" height="8" rx="4" fill="#1B2740"/>
+  <rect x="768" y="134" width="181" height="8" rx="4" fill="#F85149"/>
+
+  <text x="768" y="164" font-size="12" fill="#8B98A9">计划应完成 82%</text>
+  <rect x="768" y="172" width="348" height="8" rx="4" fill="#1B2740"/>
+  <rect x="768" y="172" width="286" height="8" rx="4" fill="#55627A"/>
+
+  <rect x="768" y="194" width="92" height="20" rx="10" fill="#3A1418"/>
+  <text x="814" y="208" font-size="12" fill="#F85149" text-anchor="middle">红色预警</text>
+  <text x="874" y="208" font-size="12" fill="#E3B341">风险分 72</text>
+  <text x="952" y="208" font-size="12" fill="#8B98A9">物料缺口 3 天</text>
+
+  <!-- 底：五段流水线 -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="64"  y="264" width="196" height="38" rx="8" fill="#121B2E" stroke="#263650"/>
+    <text x="162" y="288" fill="#C7D0DB">感知层 · 事件 / 文件 / 邮箱</text>
+
+    <rect x="288" y="264" width="196" height="38" rx="8" fill="#121B2E" stroke="#263650"/>
+    <text x="386" y="288" fill="#C7D0DB">订单-工序-物料 状态图</text>
+
+    <rect x="512" y="264" width="196" height="38" rx="8" fill="#121B2E" stroke="#263650"/>
+    <text x="610" y="288" fill="#C7D0DB">规则 · 评分 · 归因 · 调查</text>
+
+    <rect x="736" y="264" width="148" height="38" rx="8" fill="#121B2E" stroke="#E3B341"/>
+    <text x="810" y="288" fill="#E3B341">人工确认</text>
+
+    <rect x="912" y="264" width="148" height="38" rx="8" fill="#121B2E" stroke="#263650"/>
+    <text x="986" y="288" fill="#C7D0DB">催办发送</text>
+
+    <g stroke="#55627A" stroke-width="2" fill="none">
+      <line x1="262" y1="283" x2="284" y2="283"/>
+      <line x1="486" y1="283" x2="508" y2="283"/>
+      <line x1="710" y1="283" x2="732" y2="283"/>
+      <line x1="886" y1="283" x2="908" y2="283"/>
+    </g>
+    <g fill="#55627A">
+      <path d="M284 283 l-6 -4 v8 z"/><path d="M508 283 l-6 -4 v8 z"/>
+      <path d="M732 283 l-6 -4 v8 z"/><path d="M908 283 l-6 -4 v8 z"/>
+    </g>
+  </g>
+</svg>
