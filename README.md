@@ -14,16 +14,38 @@
 
 ## 快速开始
 
+**前置要求**：Python 3.11+（Windows 安装时勾选 *Add to PATH*）。**不需要**数据库（内存态 + JSON 持久化）、**不需要** LLM Key——未配置时归因/调查/助手自动降级为确定性模板引擎，全功能可用。
+
+**1 · 安装依赖**
+
 ```bash
-# 1) 依赖（本机已验证：Python 3.11 + fastapi/uvicorn/langgraph/langchain + pandas/openpyxl）
+# Windows（cmd 或 PowerShell）
 pip install -r requirements.txt
 
-# 2) 启动（二选一）
-run.bat                       # Windows，自动打开浏览器
+# Linux / macOS
+python3 -m pip install -r requirements.txt
+```
+
+**2 · 启动服务**
+
+```bash
+# Windows（cmd 或 PowerShell）
 python -m uvicorn backend.main:app --host 127.0.0.1 --port 8765
 
-# 3) 打开 http://127.0.0.1:8765
+# Linux / macOS（或仓库里的 run.sh）
+python3 -m uvicorn backend.main:app --host 127.0.0.1 --port 8765
 ```
+
+**3 · 验证**：浏览器打开 <http://127.0.0.1:8765>，看到工作台 KPI 与风险分布环图即成功（种子订单首次启动自动生成，每天按「当天」重播种）。
+
+### 常见问题
+
+| 现象 | 处理 |
+| --- | --- |
+| Windows 输入 `python` 弹出 Microsoft Store | 用 `py -3` 代替 `python` |
+| Linux 报 `externally-managed-environment` | `python3 -m venv .venv && source .venv/bin/activate` 后再安装 |
+| 端口被占用 | 把 `--port 8765` 换成其他端口 |
+| pip 下载慢（国内网络） | 安装命令追加 `-i https://pypi.tuna.tsinghua.edu.cn/simple` |
 
 **3 分钟全链路演示**：感知中心 → [生成示例表格] → [立即扫描]（Xclaw 场景的本地替身）→ 工作台 ▶ 运行一轮扫描 → 预警中心看**调查报告** → 智能助手追问（有 Key 时走 ReAct，回复带"via ReAct·N步"）。
 
@@ -89,6 +111,20 @@ scripts/
 
 - 配置（二选一）：环境变量 `SENTINEL_LLM_PROVIDER / BASE_URL / MODEL / API_KEY`，或前端「设置」页（OpenAI 兼容协议，支持 openai/dashscope/zhipu/deepseek/custom）；
 - 关闭 LLM：provider 设为 `none`，全系统自动降级为确定性模板引擎，功能不受影响；
+
+环境变量方式启动示例：
+
+```powershell
+# Windows（PowerShell）
+$env:SENTINEL_LLM_API_KEY = "你的Key"
+python -m uvicorn backend.main:app --host 127.0.0.1 --port 8765
+```
+
+```bash
+# Linux / macOS
+export SENTINEL_LLM_API_KEY=你的Key
+python3 -m uvicorn backend.main:app --host 127.0.0.1 --port 8765
+```
 - 健壮性：429/5xx/超时自动退避重试；`response_format` 不被支持时自动回退文本模式解析。
 
 **防幻觉三道防线（实测驱动）**：① 事件归一化——抽取的类型与字段形状必须匹配（"只有交期没有数量"自动改判为供应商反馈）；② strict ReAct——模型不查工具直接作答会被系统退回，拒不悔改则整体回落确定性路径；③ 接地校验——调查报告/助手回复中出现的订单号、部件号必须真实存在，否则回落模板。

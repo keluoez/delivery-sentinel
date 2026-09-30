@@ -11,3 +11,6 @@ venv/
 # 运行时状态与解析留档（首次启动由 seed_data.py 自动重建）
 data/state.json
 data/inbox/processed/
+
+# Windows 本地启动脚本（面向本机环境硬编码，其他电脑不可用，不入库；标准启动方式见 README）
+*.bat
